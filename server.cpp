@@ -21,7 +21,7 @@ int sockfd;
 struct sockaddr_in server_address;
 struct in_addr server_ip;
 int server_address_len = sizeof(server_address);
-int convert_ret, bind_ret, listen_ret, accept_ret, pthread_creat_ret, set_sockopt_frag_ret;
+int convert_ret, bind_ret, listen_ret, accept_ret, pthread_creat_ret;
 vector<int> client_sockfds;
 vector<int> client_queue;
 int new_socket;
@@ -74,7 +74,7 @@ void* solve_client(void* client_socket) {
         if(client == client_sockfd) client_queue.erase(client_queue.begin() + i);
     }
 
-    //sending active message to allow client to chat to others
+    //sending active message to allow client to chat with others
     char active_message[] = "1";
 
     int send_ret = send(client_sockfd, active_message, strlen(active_message), 0);
@@ -84,7 +84,9 @@ void* solve_client(void* client_socket) {
         sem_post(&semaphore);
         pthread_exit(NULL);        
     }
+    //finish sending active message
 
+    //sending ready-to-chat message
     char ready_to_chat_message[] = "Let's go! (type 'quit' to quit chat)";
     send_ret = send(client_sockfd, ready_to_chat_message, strlen(ready_to_chat_message), 0);
 
@@ -94,7 +96,7 @@ void* solve_client(void* client_socket) {
         sem_post(&semaphore);
         pthread_exit(NULL);
     }
-    //fisinh sending active message
+    //finish sending ready-to-chat message
 
     while(1) {
         char buffer[BUF_SZ];
@@ -179,16 +181,6 @@ int main() {
     }
 
     printf("create socket success\n");
-
-    //set socket option to get client socket info
-    set_sockopt_frag_ret = setsockopt(sockfd, IPPROTO_IP, IP_MTU_DISCOVER, &optval, sizeof(optval));
-    printf("set_sockopt_frag_ret = %d\n", set_sockopt_frag_ret);
-
-    if(set_sockopt_frag_ret < 0) {
-        perror("setsockopt for frag");
-        close(sockfd);
-        exit(EXIT_FAILURE);
-    }
 
     server_address.sin_family = AF_INET;
     convert_ret = inet_pton(AF_INET, MAIN_NIC, &server_ip);
