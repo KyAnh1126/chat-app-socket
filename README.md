@@ -14,3 +14,20 @@
 - socket được sử dụng, client cần biết địa chỉ IP và port của server để gửi request tới server 
 - client được chia thành hai luồng là gửi và nhận tin nhắn
 - các signal được gọi (giống server) để đóng socket đang được kết nối khi client nhập 'quit' hoặc nhấn CTRL_C
+
+3. Kết quả chương trình:
+- phía client gồm 4 client tham gia vào phòng chat cùng một lúc:
+    + ví dụ về client 1:
+![image](https://github.com/user-attachments/assets/558d056f-4df2-4b9a-b622-3d2a13fe60dc)
+
+    + client 4 nếu tham vào phòng chat đã đủ 3 người sẽ phải đợi cho đến 1 trong 3 người rời khỏi phòng (do semaphore):
+![image](https://github.com/user-attachments/assets/86615f5b-e069-48e2-8235-b8b7b8b65688)
+
+- phía server hiển thị thông tin về client khi enter vào phòng chat:
+    + ![image](https://github.com/user-attachments/assets/21d727b8-a52a-4edd-b016-36611db55a3c)
+
+    + ![image](https://github.com/user-attachments/assets/3e4012a0-651d-45ec-8e96-21d0ad29dc60)
+
+
+    
+
