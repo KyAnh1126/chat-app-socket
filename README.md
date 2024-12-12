@@ -18,15 +18,16 @@
 3. Kết quả chương trình:
 - phía client gồm 4 client tham gia vào phòng chat cùng một lúc:
     + ví dụ về client 1:
-![image](https://github.com/user-attachments/assets/558d056f-4df2-4b9a-b622-3d2a13fe60dc)
+![10](https://github.com/user-attachments/assets/53ee7d22-a90d-4cd0-83b9-e7d26c35f0bf)
 
     + client 4 nếu tham vào phòng chat đã đủ 3 người sẽ phải đợi cho đến 1 trong 3 người rời khỏi phòng (do semaphore):
-![image](https://github.com/user-attachments/assets/86615f5b-e069-48e2-8235-b8b7b8b65688)
+![11](https://github.com/user-attachments/assets/e8692597-cb14-4095-ab39-af627fbcf057)
 
 - phía server hiển thị thông tin về client khi enter vào phòng chat:
-    + ![image](https://github.com/user-attachments/assets/21d727b8-a52a-4edd-b016-36611db55a3c)
+    + ![12](https://github.com/user-attachments/assets/1ae11685-0cb2-4280-88ee-8b7e85d14d5f)
 
-    + ![image](https://github.com/user-attachments/assets/3e4012a0-651d-45ec-8e96-21d0ad29dc60)
+    + ![13](https://github.com/user-attachments/assets/2044fa16-722f-4865-bf92-41b71b17ebfa)
+
 
 
     
